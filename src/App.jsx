@@ -15,7 +15,6 @@ function App() {
     firstName: '',
     lastName: '',
     contact: '',
-    doesWork: false,
     group: ''
   });
   const [loading, setLoading] = useState(false);
@@ -47,7 +46,7 @@ function App() {
       toast.success('Contact added successfully');
     }
     setShowModal(false);
-    setFormData({ firstName: '', lastName: '', doesWork: false, group: '' });
+    setFormData({ firstName: '', lastName: '',  group: '' });
     setLoading(false);
   };
 
@@ -64,7 +63,6 @@ function App() {
       firstName: student.firstName,
       lastName: student.lastName,
       contact: student.contact,
-      doesWork: student.doesWork,
       group: student.group
     });
     setCurrentStudentId(student.id);
@@ -117,7 +115,7 @@ function App() {
             </Form.Select>
           </Col>
         </Row>
-        <Button variant="primary" onClick={openModal}>Add Student</Button>
+        <Button variant="primary" onClick={openModal}>Add Conatct</Button>
       </div>
       <Table striped bordered hover className="mt-4">
         <thead>
@@ -125,7 +123,6 @@ function App() {
             <th>First Name</th>
             <th>Last Name</th>
             <th>Contact</th>
-            <th>Does Work</th>
             <th>Gender</th>
             <th>Actions</th>
           </tr>
@@ -136,7 +133,6 @@ function App() {
               <td>{student.firstName}</td>
               <td>{student.lastName}</td>
               <td>{student.contact}</td>
-              <td>{student.doesWork ? 'Yes' : 'No'}</td>
               <td>{student.group}</td>
               <td className='tds'>
                 <Button className='buton' variant="warning" onClick={() => handleEdit(student)}><img src={edit} alt="" /></Button>{' '}
@@ -149,7 +145,7 @@ function App() {
 
       <Modal show={showModal} onHide={closeModal}>
         <Modal.Header closeButton>
-          <Modal.Title>{isEditing ? 'Edit Student' : 'Add Student'}</Modal.Title>
+          <Modal.Title>{isEditing ? 'Edit Conatct' : 'Add Conatct'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleFormSubmit}>
@@ -178,18 +174,10 @@ function App() {
               <Form.Control
                 type="number"
                 name="contact"
+                placeholder='+998_000_00_00'
                 value={formData.contact}
                 onChange={handleInputChange}
                 required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formDoesWork">
-              <Form.Check
-                type="checkbox"
-                label="Does Work"
-                name="doesWork"
-                checked={formData.doesWork}
-                onChange={handleInputChange}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroup">
@@ -201,14 +189,14 @@ function App() {
                 onChange={handleInputChange}
                 required
               >
-                <option value="">Select Group</option>
+                <option value="">Select Gender</option>
                 {gender.map((group, index) => (
                   <option key={index} value={group}>{group}</option>
                 ))}
               </Form.Control>
             </Form.Group>
             <Button variant="primary" type="submit" disabled={loading}>
-              {loading ? <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /> : isEditing ? 'Update Student' : 'Add Student'}
+              {loading ? <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /> : isEditing ? 'Update Contact' : 'Add Contact'}
             </Button>
           </Form>
         </Modal.Body>
