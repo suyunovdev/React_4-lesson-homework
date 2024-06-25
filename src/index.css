@@ -19,8 +19,6 @@ border-radius: 15px;
 
 }
 
-
-
 .rows{
 display: flex;
 gap: 30px;
@@ -56,4 +54,8 @@ background-position: center;
   display: flex;
   justify-content: space-around;
 transform: scale(1) !important;  
+}
+
+.Toastify{
+  width: 700px !important;
 }
