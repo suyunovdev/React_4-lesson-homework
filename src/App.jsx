@@ -174,7 +174,8 @@ function App() {
               <Form.Control
                 type="number"
                 name="contact"
-                placeholder='+998_000_00_00'
+                placeholder='+998'
+
                 value={formData.contact}
                 onChange={handleInputChange}
                 required
